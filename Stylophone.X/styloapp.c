@@ -40,8 +40,8 @@ typedef struct {
 
 
 /* TABLA DE NOTAS (Octava 3 y 4) 
-   Calculado para 6MHz con Prescaler de 4 en Timer 2.
-   Fórmula: PR2 = (6,000,000 / (4 * Fnota * 4)) - 1
+   Calculado para 6MHz con Prescaler de 1 en Timer 2.
+   Fórmula: PR2 = (32768 / (4 * Fnota * 1)) - 1
 */
 const Nota ESCALA[] = {
     /*OCTAVA 3*/
