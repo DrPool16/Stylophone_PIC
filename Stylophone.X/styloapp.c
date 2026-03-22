@@ -1,10 +1,14 @@
-/*
- * File:   styloapp.c
- * Author: DrPool_16
- *
- * Created on 20 de marzo de 2026, 16:56
+/**
+ * @file styloapp.c
+ * @author DrPool_16
+ * @brief 24-key Stylophone implementation for PIC16F887.
+ * @version 1.0
+ * @date 2026-03-22
+ * 
+ * @details Uses CCP1 in PWM mode to generate musical tones
+ * based on a lookup table (LUT). Key scanning is implemented
+ * using a port-mapping structure for portability.
  */
-
 
 #include <xc.h>
 
@@ -118,10 +122,13 @@ void init_stylophone(void) {
     // T2CON: Prescaler 1:1, Timer2 ON
     T2CON = 0b00000100;; 
 }
-
+/**
+ * @brief Enables PWM output for a specific note.
+ * @param id Index of the note in the ESCALA table. If -1, the output is muted.
+ */
 void sonar(int id) {
     if (id == -1) {
-        CCP1CON = 0; // Silencio
+        CCP1CON = 0;
         return;
     }
 

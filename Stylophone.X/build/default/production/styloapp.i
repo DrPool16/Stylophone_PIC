@@ -7,14 +7,7 @@
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "styloapp.c" 2
-
-
-
-
-
-
-
-
+# 13 "styloapp.c"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2655,7 +2648,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "C:\\Program Files\\Microchip\\xc8\\v3.10\\pic\\include/xc.h" 2 3
-# 10 "styloapp.c" 2
+# 14 "styloapp.c" 2
 
 
 #pragma config FOSC = LP
@@ -2767,6 +2760,9 @@ void init_stylophone(void) {
 
     T2CON = 0b00000100;;
 }
+
+
+
 
 void sonar(int id) {
     if (id == -1) {

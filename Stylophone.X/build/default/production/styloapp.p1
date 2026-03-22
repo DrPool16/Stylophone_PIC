@@ -1,10 +1,10 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"25 styloapp.c
-[; ;styloapp.c: 25:     {58, 118},
+"29 styloapp.c
+[; ;styloapp.c: 29:     {46, 94},
 [s S142 `uc 1 `us 1 ]
 [n S142 . pr2_val duty_val ]
-"31
-[; ;styloapp.c: 31:     {40, 84},
+"35
+[; ;styloapp.c: 35:     {32, 66},
 [s S143 `*Vuc 1 `uc 1 `uc 1 ]
 [n S143 . port pin nota_idx ]
 "164 C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC16Fxxx_DFP/1.7.162/xc8\pic\include\proc/pic16f887.h
@@ -313,29 +313,29 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3544
 [; ;C:/Program Files/Microchip/MPLABX/v6.30/packs/Microchip/PIC16Fxxx_DFP/1.7.162/xc8\pic\include\proc/pic16f887.h: 3544: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"12 styloapp.c
-[; ;styloapp.c: 12:     volatile unsigned char *port;
-[p x FOSC  =  LP         ]
-"13
-[; ;styloapp.c: 13:     uint8_t pin;
-[p x WDTE  =  OFF        ]
-"14
-[; ;styloapp.c: 14:     uint8_t nota_idx;
-[p x PWRTE  =  ON        ]
-"15
-[; ;styloapp.c: 15: } Tecla;
-[p x MCLRE  =  ON        ]
-"16
+"16 styloapp.c
 [; ;styloapp.c: 16: 
-[p x CP  =  OFF          ]
+[p x FOSC  =  LP         ]
 "17
 [; ;styloapp.c: 17: 
-[p x BOREN  =  OFF       ]
+[p x WDTE  =  OFF        ]
 "18
 [; ;styloapp.c: 18: 
+[p x PWRTE  =  ON        ]
+"19
+[; ;styloapp.c: 19: 
+[p x MCLRE  =  ON        ]
+"20
+[; ;styloapp.c: 20: 
+[p x CP  =  OFF          ]
+"21
+[; ;styloapp.c: 21: 
+[p x BOREN  =  OFF       ]
+"22
+[; ;styloapp.c: 22: const Nota ESCALA[] = {
 [p x LVP  =  OFF         ]
-"42
-[; ;styloapp.c: 42:     {25, 53},
+"46
+[; ;styloapp.c: 46:     {20, 42},
 [v _ESCALA `CS142 ~T0 @X0 -> 24 `i e ]
 [i _ESCALA
 :U ..
@@ -437,8 +437,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"76
-[; ;styloapp.c: 76:     {&PORTD, 2, 18},
+"80
+[; ;styloapp.c: 80:     {&PORTD, 6, 22},
 [v _MIS_TECLAS `CS143 ~T0 @X0 -> 24 `i e ]
 [i _MIS_TECLAS
 :U ..
@@ -564,97 +564,95 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ..
 ]
-"105
-[; ;styloapp.c: 105:         return;
+"109
+[; ;styloapp.c: 109:     }
 [v _init_stylophone `(v ~T0 @X0 1 ef ]
 {
 [e :U _init_stylophone ]
 [f ]
-"107
-[; ;styloapp.c: 107: 
+"111
+[; ;styloapp.c: 111:     PR2 = ESCALA[id].pr2_val;
 [e = _ANSEL -> -> 0 `i `uc ]
 [e = _ANSELH -> -> 0 `i `uc ]
-"109
-[; ;styloapp.c: 109: 
+"113
+[; ;styloapp.c: 113: 
 [e = _PORTA -> -> 0 `i `uc ]
 [e = _PORTB -> -> 0 `i `uc ]
 [e = _PORTC -> -> 0 `i `uc ]
 [e = _PORTD -> -> 0 `i `uc ]
-"111
-[; ;styloapp.c: 111:     CCPR1L = (ESCALA[id].duty_val >> 2);
+"115
+[; ;styloapp.c: 115:     CCP1CONbits.DC1B = (ESCALA[id].duty_val & 3);
 [e = _TRISA -> -> 255 `i `uc ]
 [e = _TRISB -> -> 255 `i `uc ]
 [e = _TRISD -> -> 255 `i `uc ]
-"112
-[; ;styloapp.c: 112:     CCP1CONbits.DC1B = (ESCALA[id].duty_val & 3);
+"116
+[; ;styloapp.c: 116: 
 [e = _TRISC2 -> -> 0 `i `b ]
-"113
-[; ;styloapp.c: 113: 
+"117
+[; ;styloapp.c: 117:     CCP1CONbits.CCP1M = 0x0C;
 [e = _TRISC3 -> -> 1 `i `b ]
-"114
-[; ;styloapp.c: 114:     CCP1CONbits.CCP1M = 0x0C;
+"118
+[; ;styloapp.c: 118: }
 [e = _TRISC4 -> -> 1 `i `b ]
-"119
-[; ;styloapp.c: 119: void main(void) {
+"123
+[; ;styloapp.c: 123:     init_stylophone();
 [e = _T2CON -> -> 4 `i `uc ]
-"120
-[; ;styloapp.c: 120:     init_stylophone();
+"124
+[; ;styloapp.c: 124: 
 [e :UE 144 ]
 }
-"122
-[; ;styloapp.c: 122:     while(1) {
+"129
+[; ;styloapp.c: 129:         for(int i = 0; i < 24; i++) {
 [v _sonar `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _sonar ]
 [v _id `i ~T0 @X0 1 r1 ]
 [f ]
-"123
-[; ;styloapp.c: 123:         int nota_detectada = -1;
+"130
+[; ;styloapp.c: 130: 
 [e $ ! == _id -U -> 1 `i 146  ]
 {
-"124
-[; ;styloapp.c: 124: 
+"131
+[; ;styloapp.c: 131:             if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
 [e = _CCP1CON -> -> 0 `i `uc ]
-"125
-[; ;styloapp.c: 125: 
+"132
+[; ;styloapp.c: 132: 
 [e $UE 145  ]
-"126
-[; ;styloapp.c: 126:         for(int i = 0; i < 24; i++) {
+"133
+[; ;styloapp.c: 133: 
 }
 [e :U 146 ]
-"128
-[; ;styloapp.c: 128:             if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
-[e = _PR2 . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 0 ]
-"131
-[; ;styloapp.c: 131:                 _delay((unsigned long)((5)*(32768/4000.0)));
-[e = _CCPR1L -> >> -> . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 1 `ui -> 2 `i `uc ]
-"132
-[; ;styloapp.c: 132:                 if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
-[e = . . _CCP1CONbits 0 1 -> & -> . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 1 `ui -> -> 3 `i `ui `uc ]
-"134
-[; ;styloapp.c: 134:                     break;
-[e = . . _CCP1CONbits 0 0 -> -> 12 `i `uc ]
 "135
-[; ;styloapp.c: 135:                 }
+[; ;styloapp.c: 135:                 if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
+[e = _PR2 . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 0 ]
+"138
+[; ;styloapp.c: 138:                 }
+[e = _CCPR1L -> >> -> . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 1 `ui -> 2 `i `uc ]
+"139
+[; ;styloapp.c: 139:             }
+[e = . . _CCP1CONbits 0 1 -> & -> . *U + &U _ESCALA * -> -> _id `ui `ux -> -> # *U &U _ESCALA `ui `ux 1 `ui -> -> 3 `i `ui `uc ]
+"141
+[; ;styloapp.c: 141: 
+[e = . . _CCP1CONbits 0 0 -> -> 12 `i `uc ]
+"142
+[; ;styloapp.c: 142:         sonar(nota_detectada);
 [e :UE 145 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"139
-[; ;styloapp.c: 139:         sonar(nota_detectada);
+"146
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"140
-[; ;styloapp.c: 140:     }
+"147
 [e ( _init_stylophone ..  ]
-"142
+"149
 [e :U 149 ]
 {
-"143
+"150
 [v _nota_detectada `i ~T0 @X0 1 a ]
 [e = _nota_detectada -U -> 1 `i ]
-"146
+"153
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -662,37 +660,37 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $U 152  ]
 [e :U 151 ]
 {
-"148
+"155
 [e $ ! != & -> *U . *U + &U _MIS_TECLAS * -> -> _i `ui `ux -> -> # *U &U _MIS_TECLAS `ui `ux 0 `i << -> 1 `i -> . *U + &U _MIS_TECLAS * -> -> _i `ui `ux -> -> # *U &U _MIS_TECLAS `ui `ux 1 `i -> 0 `i 154  ]
 {
-"151
+"158
 [e ( __delay (1 -> * -> -> 5 `i `d / -> -> 32768 `l `d .4000.0 `ul ]
-"152
+"159
 [e $ ! != & -> *U . *U + &U _MIS_TECLAS * -> -> _i `ui `ux -> -> # *U &U _MIS_TECLAS `ui `ux 0 `i << -> 1 `i -> . *U + &U _MIS_TECLAS * -> -> _i `ui `ux -> -> # *U &U _MIS_TECLAS `ui `ux 1 `i -> 0 `i 155  ]
 {
-"153
+"160
 [e = _nota_detectada -> . *U + &U _MIS_TECLAS * -> -> _i `ui `ux -> -> # *U &U _MIS_TECLAS `ui `ux 2 `i ]
-"154
+"161
 [e $U 152  ]
-"155
+"162
 }
 [e :U 155 ]
-"156
+"163
 }
 [e :U 154 ]
-"157
+"164
 }
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 24 `i 151  ]
 [e :U 152 ]
 }
-"159
+"166
 [e ( _sonar (1 _nota_detectada ]
-"160
+"167
 }
 [e :U 148 ]
 [e $U 149  ]
 [e :U 150 ]
-"161
+"168
 [e :UE 147 ]
 }

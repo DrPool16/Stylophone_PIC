@@ -1,7 +1,7 @@
 
 
 Microchip MPLAB XC8 Assembler V3.10 build 20250813170317 
-                                                                                               Sun Mar 22 12:42:47 2026
+                                                                                               Sun Mar 22 13:37:52 2026
 
 Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1 
      1                           	processor	16F887
@@ -506,7 +506,7 @@ Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1
    492 ;;
    493 ;; *************** function _main *****************
    494 ;; Defined at:
-   495 ;;		line 139 in file "styloapp.c"
+   495 ;;		line 146 in file "styloapp.c"
    496 ;; Parameters:    Size  Location     Type
    497 ;;		None
    498 ;; Auto vars:     Size  Location     Type
@@ -542,523 +542,521 @@ Microchip MPLAB XC8 C Compiler v3.10 (Free license) build 20250813170317 Og1
    528                           ;incstack = 0
    529                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+btemp1+cstack]
    530                           
-   531                           
-   532                           ;styloapp.c: 140:     }
-   533     072F  120A  118A  26B9  120A  118A  	fcall	_init_stylophone
-   534     0734                     l717:
-   535     0734  30FF               	movlw	255
-   536     0735  1283               	bcf	3,5	;RP0=0, select bank0
-   537     0736  1303               	bcf	3,6	;RP1=0, select bank0
-   538     0737  00A0               	movwf	main@nota_detectada
-   539     0738  30FF               	movlw	255
-   540     0739  00A1               	movwf	main@nota_detectada+1
-   541     073A                     l719:
-   542     073A  01A2               	clrf	main@i
-   543     073B  01A3               	clrf	main@i+1
-   544     073C                     l725:
-   545     073C  1283               	bcf	3,5	;RP0=0, select bank0
-   546     073D  1303               	bcf	3,6	;RP1=0, select bank0
-   547     073E  0822               	movf	main@i,w
-   548     073F  00F7               	movwf	??_main
-   549     0740  3001               	movlw	1
-   550     0741                     u175:
-   551     0741  1003               	clrc
-   552     0742  0DF7               	rlf	??_main,f
-   553     0743  3EFF               	addlw	-1
-   554     0744  1D03               	skipz
-   555     0745  2F41               	goto	u175
-   556     0746  1003               	clrc
-   557     0747  0D77               	rlf	??_main,w
-   558     0748  3E01               	addlw	low ((_MIS_TECLAS-__stringbase)| (0+32768))
-   559     0749  0084               	movwf	4
-   560     074A  120A  118A  2003  120A  118A  	fcall	stringdir
-   561     074F  00F8               	movwf	??_main+1
-   562     0750  120A  118A  2003  120A  118A  	fcall	stringdir
-   563     0755  00F9               	movwf	??_main+2
-   564     0756  0878               	movf	??_main+1,w
-   565     0757  0084               	movwf	4
-   566     0758  1783               	bsf	3,7
-   567     0759  1C79               	btfss	??_main+2,0
-   568     075A  1383               	bcf	3,7
-   569     075B  0800               	movf	0,w
-   570     075C  00FA               	movwf	??_main+3
-   571     075D  3001               	movlw	1
-   572     075E  00FB               	movwf	??_main+4
-   573     075F  0822               	movf	main@i,w
-   574     0760  00FC               	movwf	??_main+5
-   575     0761  3001               	movlw	1
-   576     0762                     u185:
-   577     0762  1003               	clrc
-   578     0763  0DFC               	rlf	??_main+5,f
-   579     0764  3EFF               	addlw	-1
-   580     0765  1D03               	skipz
-   581     0766  2F62               	goto	u185
-   582     0767  1003               	clrc
-   583     0768  0D7C               	rlf	??_main+5,w
-   584     0769  3E03               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+2))
-   585     076A  0084               	movwf	4
-   586     076B  120A  118A  2003  120A  118A  	fcall	stringdir
-   587     0770  3E01               	addlw	1
-   588     0771  2F74               	goto	u194
-   589     0772                     u195:
-   590     0772  1003               	clrc
-   591     0773  0DFB               	rlf	??_main+4,f
-   592     0774                     u194:
-   593     0774  3EFF               	addlw	-1
-   594     0775  1D03               	skipz
-   595     0776  2F72               	goto	u195
-   596     0777  087B               	movf	??_main+4,w
-   597     0778  057A               	andwf	??_main+3,w
-   598     0779  1903               	btfsc	3,2
-   599     077A  2F7C               	goto	u201
-   600     077B  2F7D               	goto	u200
-   601     077C                     u201:
-   602     077C  2FDA               	goto	l733
-   603     077D                     u200:
-   604     077D                     l727:
-   605     077D  300D               	movlw	13
-   606     077E  00F7               	movwf	??_main
-   607     077F                     u277:
-   608     077F  0BF7               	decfsz	??_main,f
-   609     0780  2F7F               	goto	u277
-   610     0781                     l729:
-   611     0781  1283               	bcf	3,5	;RP0=0, select bank0
-   612     0782  1303               	bcf	3,6	;RP1=0, select bank0
-   613     0783  0822               	movf	main@i,w
-   614     0784  00F7               	movwf	??_main
-   615     0785  3001               	movlw	1
-   616     0786                     u215:
-   617     0786  1003               	clrc
-   618     0787  0DF7               	rlf	??_main,f
-   619     0788  3EFF               	addlw	-1
-   620     0789  1D03               	skipz
-   621     078A  2F86               	goto	u215
-   622     078B  1003               	clrc
-   623     078C  0D77               	rlf	??_main,w
-   624     078D  3E01               	addlw	low ((_MIS_TECLAS-__stringbase)| (0+32768))
-   625     078E  0084               	movwf	4
-   626     078F  120A  118A  2003  120A  118A  	fcall	stringdir
-   627     0794  00F8               	movwf	??_main+1
-   628     0795  120A  118A  2003  120A  118A  	fcall	stringdir
-   629     079A  00F9               	movwf	??_main+2
-   630     079B  0878               	movf	??_main+1,w
-   631     079C  0084               	movwf	4
-   632     079D  1783               	bsf	3,7
-   633     079E  1C79               	btfss	??_main+2,0
-   634     079F  1383               	bcf	3,7
-   635     07A0  0800               	movf	0,w
-   636     07A1  00FA               	movwf	??_main+3
-   637     07A2  3001               	movlw	1
-   638     07A3  00FB               	movwf	??_main+4
-   639     07A4  0822               	movf	main@i,w
-   640     07A5  00FC               	movwf	??_main+5
-   641     07A6  3001               	movlw	1
-   642     07A7                     u225:
-   643     07A7  1003               	clrc
-   644     07A8  0DFC               	rlf	??_main+5,f
-   645     07A9  3EFF               	addlw	-1
-   646     07AA  1D03               	skipz
-   647     07AB  2FA7               	goto	u225
-   648     07AC  1003               	clrc
-   649     07AD  0D7C               	rlf	??_main+5,w
-   650     07AE  3E03               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+2))
-   651     07AF  0084               	movwf	4
-   652     07B0  120A  118A  2003  120A  118A  	fcall	stringdir
-   653     07B5  3E01               	addlw	1
-   654     07B6  2FB9               	goto	u234
-   655     07B7                     u235:
-   656     07B7  1003               	clrc
-   657     07B8  0DFB               	rlf	??_main+4,f
-   658     07B9                     u234:
-   659     07B9  3EFF               	addlw	-1
-   660     07BA  1D03               	skipz
-   661     07BB  2FB7               	goto	u235
-   662     07BC  087B               	movf	??_main+4,w
-   663     07BD  057A               	andwf	??_main+3,w
-   664     07BE  1903               	btfsc	3,2
-   665     07BF  2FC1               	goto	u241
-   666     07C0  2FC2               	goto	u240
-   667     07C1                     u241:
-   668     07C1  2FDA               	goto	l733
-   669     07C2                     u240:
-   670     07C2                     l731:
-   671     07C2  0822               	movf	main@i,w
-   672     07C3  00F7               	movwf	??_main
-   673     07C4  3001               	movlw	1
-   674     07C5                     u255:
-   675     07C5  1003               	clrc
-   676     07C6  0DF7               	rlf	??_main,f
-   677     07C7  3EFF               	addlw	-1
-   678     07C8  1D03               	skipz
-   679     07C9  2FC5               	goto	u255
-   680     07CA  1003               	clrc
-   681     07CB  0D77               	rlf	??_main,w
-   682     07CC  3E04               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+3))
-   683     07CD  0084               	movwf	4
-   684     07CE  120A  118A  2003  120A  118A  	fcall	stringdir
-   685     07D3  00F8               	movwf	??_main+1
-   686     07D4  01F9               	clrf	??_main+2
-   687     07D5  0878               	movf	??_main+1,w
-   688     07D6  00A0               	movwf	main@nota_detectada
-   689     07D7  0879               	movf	??_main+2,w
-   690     07D8  00A1               	movwf	main@nota_detectada+1
-   691     07D9  2FED               	goto	l737
-   692     07DA                     l733:
-   693     07DA  3001               	movlw	1
-   694     07DB  07A2               	addwf	main@i,f
-   695     07DC  1803               	skipnc
-   696     07DD  0AA3               	incf	main@i+1,f
-   697     07DE  3000               	movlw	0
-   698     07DF  07A3               	addwf	main@i+1,f
-   699     07E0                     l735:
-   700     07E0  0823               	movf	main@i+1,w
-   701     07E1  3A80               	xorlw	128
-   702     07E2  00FF               	movwf	btemp1
-   703     07E3  3080               	movlw	128
-   704     07E4  027F               	subwf	btemp1,w
-   705     07E5  1D03               	skipz
-   706     07E6  2FE9               	goto	u265
-   707     07E7  3018               	movlw	24
-   708     07E8  0222               	subwf	main@i,w
-   709     07E9                     u265:
-   710     07E9  1C03               	skipc
-   711     07EA  2FEC               	goto	u261
-   712     07EB  2FED               	goto	u260
-   713     07EC                     u261:
-   714     07EC  2F3C               	goto	l725
-   715     07ED                     u260:
-   716     07ED                     l737:
-   717     07ED  1283               	bcf	3,5	;RP0=0, select bank0
-   718     07EE  1303               	bcf	3,6	;RP1=0, select bank0
-   719     07EF  0821               	movf	main@nota_detectada+1,w
-   720     07F0  00F4               	movwf	sonar@id+1
-   721     07F1  0820               	movf	main@nota_detectada,w
-   722     07F2  00F3               	movwf	sonar@id
-   723     07F3  120A  118A  26D3  120A  118A  	fcall	_sonar
-   724     07F8  2F34               	goto	l717
-   725     07F9  120A  118A  2800   	ljmp	start
-   726     07FC                     __end_of_main:
-   727                           
-   728                           	psect	text1
-   729     06D3                     __ptext1:	
-   730 ;; *************** function _sonar *****************
-   731 ;; Defined at:
-   732 ;;		line 122 in file "styloapp.c"
-   733 ;; Parameters:    Size  Location     Type
-   734 ;;  id              2    3[COMMON] int 
-   735 ;; Auto vars:     Size  Location     Type
-   736 ;;		None
-   737 ;; Return value:  Size  Location     Type
-   738 ;;                  1    wreg      void 
-   739 ;; Registers used:
-   740 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, btemp1, cstack
-   741 ;; Tracked objects:
-   742 ;;		On entry : 0/0
-   743 ;;		On exit  : 0/0
-   744 ;;		Unchanged: 0/0
-   745 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   746 ;;      Params:         2       0       0       0       0
-   747 ;;      Locals:         0       0       0       0       0
-   748 ;;      Temps:          2       0       0       0       0
-   749 ;;      Totals:         4       0       0       0       0
-   750 ;;Total ram usage:        4 bytes
-   751 ;; Hardware stack levels used: 1
-   752 ;; Hardware stack levels required when called: 1
-   753 ;; This function calls:
-   754 ;;		___bmul
-   755 ;; This function is called by:
-   756 ;;		_main
-   757 ;; This function uses a non-reentrant model
-   758 ;;
-   759                           
-   760     06D3                     _sonar:	
-   761                           ;psect for function _sonar
-   762                           
-   763     06D3                     l701:	
-   764                           ;incstack = 0
-   765                           ; Regs used in _sonar: [wreg-fsr0h+status,2+status,0+pclath+btemp1+cstack]
-   766                           
-   767                           
-   768                           ;styloapp.c: 123:         int nota_detectada = -1;
-   769     06D3  0A73               	incf	sonar@id,w
-   770     06D4  1D03               	skipz
-   771     06D5  2EDA               	goto	u161
-   772     06D6  0A74               	incf	sonar@id+1,w
-   773     06D7  1D03               	btfss	3,2
-   774     06D8  2EDA               	goto	u161
-   775     06D9  2EDB               	goto	u160
-   776     06DA                     u161:
-   777     06DA  2EDF               	goto	l707
-   778     06DB                     u160:
-   779     06DB                     l703:
-   780                           
-   781                           ;styloapp.c: 124: 
-   782     06DB  1283               	bcf	3,5	;RP0=0, select bank0
-   783     06DC  1303               	bcf	3,6	;RP1=0, select bank0
-   784     06DD  0197               	clrf	23	;volatile
-   785     06DE  2F2E               	goto	l47
-   786     06DF                     l707:
-   787                           
-   788                           ;styloapp.c: 128:             if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
-   789     06DF  3003               	movlw	3
-   790     06E0  00F0               	movwf	___bmul@multiplicand
-   791     06E1  0873               	movf	sonar@id,w
-   792     06E2  120A  118A  26A6  120A  118A  	fcall	___bmul
-   793     06E7  3E61               	addlw	low ((_ESCALA-__stringbase)| (0+32768))
-   794     06E8  0084               	movwf	4
-   795     06E9  120A  118A  2003  120A  118A  	fcall	stringdir
-   796     06EE  1683               	bsf	3,5	;RP0=1, select bank1
-   797     06EF  1303               	bcf	3,6	;RP1=0, select bank1
-   798     06F0  0092               	movwf	18	;volatile
-   799     06F1                     l709:
-   800                           
-   801                           ;styloapp.c: 131:                 _delay((unsigned long)((5)*(32768/4000.0)));
-   802     06F1  3003               	movlw	3
-   803     06F2  00F0               	movwf	___bmul@multiplicand
-   804     06F3  0873               	movf	sonar@id,w
-   805     06F4  120A  118A  26A6  120A  118A  	fcall	___bmul
-   806     06F9  3E62               	addlw	low (((_ESCALA-__stringbase)| (0+32768)+1))
-   807     06FA  0084               	movwf	4
-   808     06FB  120A  118A  2003  120A  118A  	fcall	stringdir
-   809     0700  00F5               	movwf	??_sonar
-   810     0701  120A  118A  2003  120A  118A  	fcall	stringdir
-   811     0706  00F6               	movwf	??_sonar+1
-   812     0707  1003               	clrc
-   813     0708  0CF6               	rrf	??_sonar+1,f
-   814     0709  0CF5               	rrf	??_sonar,f
-   815     070A  1003               	clrc
-   816     070B  0CF6               	rrf	??_sonar+1,f
-   817     070C  0CF5               	rrf	??_sonar,f
-   818     070D  0875               	movf	??_sonar,w
-   819     070E  1283               	bcf	3,5	;RP0=0, select bank0
-   820     070F  1303               	bcf	3,6	;RP1=0, select bank0
-   821     0710  0095               	movwf	21	;volatile
-   822     0711                     l711:
-   823                           
-   824                           ;styloapp.c: 132:                 if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
-   825     0711  3003               	movlw	3
-   826     0712  00F0               	movwf	___bmul@multiplicand
-   827     0713  0873               	movf	sonar@id,w
-   828     0714  120A  118A  26A6  120A  118A  	fcall	___bmul
-   829     0719  3E62               	addlw	low (((_ESCALA-__stringbase)| (0+32768)+1))
-   830     071A  0084               	movwf	4
-   831     071B  120A  118A  2003  120A  118A  	fcall	stringdir
-   832     0720  3903               	andlw	3
-   833     0721  00F5               	movwf	??_sonar
-   834     0722  0EF5               	swapf	??_sonar,f
-   835     0723  1283               	bcf	3,5	;RP0=0, select bank0
-   836     0724  1303               	bcf	3,6	;RP1=0, select bank0
-   837     0725  0817               	movf	23,w	;volatile
-   838     0726  0675               	xorwf	??_sonar,w
-   839     0727  39CF               	andlw	-49
-   840     0728  0675               	xorwf	??_sonar,w
-   841     0729  0097               	movwf	23	;volatile
-   842     072A                     l713:
-   843                           
-   844                           ;styloapp.c: 134:                     break;
-   845     072A  0817               	movf	23,w	;volatile
-   846     072B  39F0               	andlw	-16
-   847     072C  380C               	iorlw	12
-   848     072D  0097               	movwf	23	;volatile
-   849     072E                     l47:
-   850     072E  0008               	return
-   851     072F                     __end_of_sonar:
-   852                           
-   853                           	psect	text2
-   854     06A6                     __ptext2:	
-   855 ;; *************** function ___bmul *****************
-   856 ;; Defined at:
-   857 ;;		line 4 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8.c"
-   858 ;; Parameters:    Size  Location     Type
-   859 ;;  multiplier      1    wreg     unsigned char 
-   860 ;;  multiplicand    1    0[COMMON] unsigned char 
-   861 ;; Auto vars:     Size  Location     Type
-   862 ;;  multiplier      1    2[COMMON] unsigned char 
-   863 ;;  product         1    1[COMMON] unsigned char 
-   864 ;; Return value:  Size  Location     Type
-   865 ;;                  1    wreg      unsigned char 
-   866 ;; Registers used:
-   867 ;;		wreg, status,2, status,0
-   868 ;; Tracked objects:
-   869 ;;		On entry : 0/0
-   870 ;;		On exit  : 0/0
-   871 ;;		Unchanged: 0/0
-   872 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   873 ;;      Params:         1       0       0       0       0
-   874 ;;      Locals:         2       0       0       0       0
-   875 ;;      Temps:          0       0       0       0       0
-   876 ;;      Totals:         3       0       0       0       0
-   877 ;;Total ram usage:        3 bytes
-   878 ;; Hardware stack levels used: 1
-   879 ;; This function calls:
-   880 ;;		Nothing
-   881 ;; This function is called by:
-   882 ;;		_sonar
-   883 ;; This function uses a non-reentrant model
-   884 ;;
-   885                           
-   886     06A6                     ___bmul:	
-   887                           ;psect for function ___bmul
-   888                           
-   889                           
-   890                           ;incstack = 0
-   891                           ; Regs used in ___bmul: [wreg+status,2+status,0]
-   892                           ;___bmul@multiplier stored from wreg
-   893     06A6  00F2               	movwf	___bmul@multiplier
-   894     06A7                     l671:
-   895     06A7  01F1               	clrf	___bmul@product
-   896     06A8                     l673:
-   897     06A8  1C72               	btfss	___bmul@multiplier,0
-   898     06A9  2EAB               	goto	u141
-   899     06AA  2EAC               	goto	u140
-   900     06AB                     u141:
-   901     06AB  2EAE               	goto	l677
-   902     06AC                     u140:
-   903     06AC                     l675:
-   904     06AC  0870               	movf	___bmul@multiplicand,w
-   905     06AD  07F1               	addwf	___bmul@product,f
-   906     06AE                     l677:
-   907     06AE  1003               	clrc
-   908     06AF  0DF0               	rlf	___bmul@multiplicand,f
-   909     06B0                     l679:
-   910     06B0  1003               	clrc
-   911     06B1  0CF2               	rrf	___bmul@multiplier,f
-   912     06B2  0872               	movf	___bmul@multiplier,w
-   913     06B3  1D03               	btfss	3,2
-   914     06B4  2EB6               	goto	u151
-   915     06B5  2EB7               	goto	u150
-   916     06B6                     u151:
-   917     06B6  2EA8               	goto	l673
-   918     06B7                     u150:
-   919     06B7                     l681:
-   920     06B7  0871               	movf	___bmul@product,w
-   921     06B8                     l171:
-   922     06B8  0008               	return
-   923     06B9                     __end_of___bmul:
-   924                           
-   925                           	psect	text3
-   926     06B9                     __ptext3:	
-   927 ;; *************** function _init_stylophone *****************
-   928 ;; Defined at:
-   929 ;;		line 105 in file "styloapp.c"
-   930 ;; Parameters:    Size  Location     Type
+   531     072F  120A  118A  26B9  120A  118A  	fcall	_init_stylophone
+   532     0734                     l717:
+   533     0734  30FF               	movlw	255
+   534     0735  1283               	bcf	3,5	;RP0=0, select bank0
+   535     0736  1303               	bcf	3,6	;RP1=0, select bank0
+   536     0737  00A0               	movwf	main@nota_detectada
+   537     0738  30FF               	movlw	255
+   538     0739  00A1               	movwf	main@nota_detectada+1
+   539     073A                     l719:
+   540     073A  01A2               	clrf	main@i
+   541     073B  01A3               	clrf	main@i+1
+   542     073C                     l725:
+   543     073C  1283               	bcf	3,5	;RP0=0, select bank0
+   544     073D  1303               	bcf	3,6	;RP1=0, select bank0
+   545     073E  0822               	movf	main@i,w
+   546     073F  00F7               	movwf	??_main
+   547     0740  3001               	movlw	1
+   548     0741                     u175:
+   549     0741  1003               	clrc
+   550     0742  0DF7               	rlf	??_main,f
+   551     0743  3EFF               	addlw	-1
+   552     0744  1D03               	skipz
+   553     0745  2F41               	goto	u175
+   554     0746  1003               	clrc
+   555     0747  0D77               	rlf	??_main,w
+   556     0748  3E01               	addlw	low ((_MIS_TECLAS-__stringbase)| (0+32768))
+   557     0749  0084               	movwf	4
+   558     074A  120A  118A  2003  120A  118A  	fcall	stringdir
+   559     074F  00F8               	movwf	??_main+1
+   560     0750  120A  118A  2003  120A  118A  	fcall	stringdir
+   561     0755  00F9               	movwf	??_main+2
+   562     0756  0878               	movf	??_main+1,w
+   563     0757  0084               	movwf	4
+   564     0758  1783               	bsf	3,7
+   565     0759  1C79               	btfss	??_main+2,0
+   566     075A  1383               	bcf	3,7
+   567     075B  0800               	movf	0,w
+   568     075C  00FA               	movwf	??_main+3
+   569     075D  3001               	movlw	1
+   570     075E  00FB               	movwf	??_main+4
+   571     075F  0822               	movf	main@i,w
+   572     0760  00FC               	movwf	??_main+5
+   573     0761  3001               	movlw	1
+   574     0762                     u185:
+   575     0762  1003               	clrc
+   576     0763  0DFC               	rlf	??_main+5,f
+   577     0764  3EFF               	addlw	-1
+   578     0765  1D03               	skipz
+   579     0766  2F62               	goto	u185
+   580     0767  1003               	clrc
+   581     0768  0D7C               	rlf	??_main+5,w
+   582     0769  3E03               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+2))
+   583     076A  0084               	movwf	4
+   584     076B  120A  118A  2003  120A  118A  	fcall	stringdir
+   585     0770  3E01               	addlw	1
+   586     0771  2F74               	goto	u194
+   587     0772                     u195:
+   588     0772  1003               	clrc
+   589     0773  0DFB               	rlf	??_main+4,f
+   590     0774                     u194:
+   591     0774  3EFF               	addlw	-1
+   592     0775  1D03               	skipz
+   593     0776  2F72               	goto	u195
+   594     0777  087B               	movf	??_main+4,w
+   595     0778  057A               	andwf	??_main+3,w
+   596     0779  1903               	btfsc	3,2
+   597     077A  2F7C               	goto	u201
+   598     077B  2F7D               	goto	u200
+   599     077C                     u201:
+   600     077C  2FDA               	goto	l733
+   601     077D                     u200:
+   602     077D                     l727:
+   603     077D  300D               	movlw	13
+   604     077E  00F7               	movwf	??_main
+   605     077F                     u277:
+   606     077F  0BF7               	decfsz	??_main,f
+   607     0780  2F7F               	goto	u277
+   608     0781                     l729:
+   609     0781  1283               	bcf	3,5	;RP0=0, select bank0
+   610     0782  1303               	bcf	3,6	;RP1=0, select bank0
+   611     0783  0822               	movf	main@i,w
+   612     0784  00F7               	movwf	??_main
+   613     0785  3001               	movlw	1
+   614     0786                     u215:
+   615     0786  1003               	clrc
+   616     0787  0DF7               	rlf	??_main,f
+   617     0788  3EFF               	addlw	-1
+   618     0789  1D03               	skipz
+   619     078A  2F86               	goto	u215
+   620     078B  1003               	clrc
+   621     078C  0D77               	rlf	??_main,w
+   622     078D  3E01               	addlw	low ((_MIS_TECLAS-__stringbase)| (0+32768))
+   623     078E  0084               	movwf	4
+   624     078F  120A  118A  2003  120A  118A  	fcall	stringdir
+   625     0794  00F8               	movwf	??_main+1
+   626     0795  120A  118A  2003  120A  118A  	fcall	stringdir
+   627     079A  00F9               	movwf	??_main+2
+   628     079B  0878               	movf	??_main+1,w
+   629     079C  0084               	movwf	4
+   630     079D  1783               	bsf	3,7
+   631     079E  1C79               	btfss	??_main+2,0
+   632     079F  1383               	bcf	3,7
+   633     07A0  0800               	movf	0,w
+   634     07A1  00FA               	movwf	??_main+3
+   635     07A2  3001               	movlw	1
+   636     07A3  00FB               	movwf	??_main+4
+   637     07A4  0822               	movf	main@i,w
+   638     07A5  00FC               	movwf	??_main+5
+   639     07A6  3001               	movlw	1
+   640     07A7                     u225:
+   641     07A7  1003               	clrc
+   642     07A8  0DFC               	rlf	??_main+5,f
+   643     07A9  3EFF               	addlw	-1
+   644     07AA  1D03               	skipz
+   645     07AB  2FA7               	goto	u225
+   646     07AC  1003               	clrc
+   647     07AD  0D7C               	rlf	??_main+5,w
+   648     07AE  3E03               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+2))
+   649     07AF  0084               	movwf	4
+   650     07B0  120A  118A  2003  120A  118A  	fcall	stringdir
+   651     07B5  3E01               	addlw	1
+   652     07B6  2FB9               	goto	u234
+   653     07B7                     u235:
+   654     07B7  1003               	clrc
+   655     07B8  0DFB               	rlf	??_main+4,f
+   656     07B9                     u234:
+   657     07B9  3EFF               	addlw	-1
+   658     07BA  1D03               	skipz
+   659     07BB  2FB7               	goto	u235
+   660     07BC  087B               	movf	??_main+4,w
+   661     07BD  057A               	andwf	??_main+3,w
+   662     07BE  1903               	btfsc	3,2
+   663     07BF  2FC1               	goto	u241
+   664     07C0  2FC2               	goto	u240
+   665     07C1                     u241:
+   666     07C1  2FDA               	goto	l733
+   667     07C2                     u240:
+   668     07C2                     l731:
+   669     07C2  0822               	movf	main@i,w
+   670     07C3  00F7               	movwf	??_main
+   671     07C4  3001               	movlw	1
+   672     07C5                     u255:
+   673     07C5  1003               	clrc
+   674     07C6  0DF7               	rlf	??_main,f
+   675     07C7  3EFF               	addlw	-1
+   676     07C8  1D03               	skipz
+   677     07C9  2FC5               	goto	u255
+   678     07CA  1003               	clrc
+   679     07CB  0D77               	rlf	??_main,w
+   680     07CC  3E04               	addlw	low (((_MIS_TECLAS-__stringbase)| (0+32768)+3))
+   681     07CD  0084               	movwf	4
+   682     07CE  120A  118A  2003  120A  118A  	fcall	stringdir
+   683     07D3  00F8               	movwf	??_main+1
+   684     07D4  01F9               	clrf	??_main+2
+   685     07D5  0878               	movf	??_main+1,w
+   686     07D6  00A0               	movwf	main@nota_detectada
+   687     07D7  0879               	movf	??_main+2,w
+   688     07D8  00A1               	movwf	main@nota_detectada+1
+   689     07D9  2FED               	goto	l737
+   690     07DA                     l733:
+   691     07DA  3001               	movlw	1
+   692     07DB  07A2               	addwf	main@i,f
+   693     07DC  1803               	skipnc
+   694     07DD  0AA3               	incf	main@i+1,f
+   695     07DE  3000               	movlw	0
+   696     07DF  07A3               	addwf	main@i+1,f
+   697     07E0                     l735:
+   698     07E0  0823               	movf	main@i+1,w
+   699     07E1  3A80               	xorlw	128
+   700     07E2  00FF               	movwf	btemp1
+   701     07E3  3080               	movlw	128
+   702     07E4  027F               	subwf	btemp1,w
+   703     07E5  1D03               	skipz
+   704     07E6  2FE9               	goto	u265
+   705     07E7  3018               	movlw	24
+   706     07E8  0222               	subwf	main@i,w
+   707     07E9                     u265:
+   708     07E9  1C03               	skipc
+   709     07EA  2FEC               	goto	u261
+   710     07EB  2FED               	goto	u260
+   711     07EC                     u261:
+   712     07EC  2F3C               	goto	l725
+   713     07ED                     u260:
+   714     07ED                     l737:
+   715     07ED  1283               	bcf	3,5	;RP0=0, select bank0
+   716     07EE  1303               	bcf	3,6	;RP1=0, select bank0
+   717     07EF  0821               	movf	main@nota_detectada+1,w
+   718     07F0  00F4               	movwf	sonar@id+1
+   719     07F1  0820               	movf	main@nota_detectada,w
+   720     07F2  00F3               	movwf	sonar@id
+   721     07F3  120A  118A  26D3  120A  118A  	fcall	_sonar
+   722     07F8  2F34               	goto	l717
+   723     07F9  120A  118A  2800   	ljmp	start
+   724     07FC                     __end_of_main:
+   725                           
+   726                           	psect	text1
+   727     06D3                     __ptext1:	
+   728 ;; *************** function _sonar *****************
+   729 ;; Defined at:
+   730 ;;		line 129 in file "styloapp.c"
+   731 ;; Parameters:    Size  Location     Type
+   732 ;;  id              2    3[COMMON] int 
+   733 ;; Auto vars:     Size  Location     Type
+   734 ;;		None
+   735 ;; Return value:  Size  Location     Type
+   736 ;;                  1    wreg      void 
+   737 ;; Registers used:
+   738 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, btemp1, cstack
+   739 ;; Tracked objects:
+   740 ;;		On entry : 0/0
+   741 ;;		On exit  : 0/0
+   742 ;;		Unchanged: 0/0
+   743 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   744 ;;      Params:         2       0       0       0       0
+   745 ;;      Locals:         0       0       0       0       0
+   746 ;;      Temps:          2       0       0       0       0
+   747 ;;      Totals:         4       0       0       0       0
+   748 ;;Total ram usage:        4 bytes
+   749 ;; Hardware stack levels used: 1
+   750 ;; Hardware stack levels required when called: 1
+   751 ;; This function calls:
+   752 ;;		___bmul
+   753 ;; This function is called by:
+   754 ;;		_main
+   755 ;; This function uses a non-reentrant model
+   756 ;;
+   757                           
+   758     06D3                     _sonar:	
+   759                           ;psect for function _sonar
+   760                           
+   761     06D3                     l701:	
+   762                           ;incstack = 0
+   763                           ; Regs used in _sonar: [wreg-fsr0h+status,2+status,0+pclath+btemp1+cstack]
+   764                           
+   765                           
+   766                           ;styloapp.c: 130: 
+   767     06D3  0A73               	incf	sonar@id,w
+   768     06D4  1D03               	skipz
+   769     06D5  2EDA               	goto	u161
+   770     06D6  0A74               	incf	sonar@id+1,w
+   771     06D7  1D03               	btfss	3,2
+   772     06D8  2EDA               	goto	u161
+   773     06D9  2EDB               	goto	u160
+   774     06DA                     u161:
+   775     06DA  2EDF               	goto	l707
+   776     06DB                     u160:
+   777     06DB                     l703:
+   778                           
+   779                           ;styloapp.c: 131:             if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
+   780     06DB  1283               	bcf	3,5	;RP0=0, select bank0
+   781     06DC  1303               	bcf	3,6	;RP1=0, select bank0
+   782     06DD  0197               	clrf	23	;volatile
+   783     06DE  2F2E               	goto	l47
+   784     06DF                     l707:
+   785                           
+   786                           ;styloapp.c: 135:                 if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
+   787     06DF  3003               	movlw	3
+   788     06E0  00F0               	movwf	___bmul@multiplicand
+   789     06E1  0873               	movf	sonar@id,w
+   790     06E2  120A  118A  26A6  120A  118A  	fcall	___bmul
+   791     06E7  3E61               	addlw	low ((_ESCALA-__stringbase)| (0+32768))
+   792     06E8  0084               	movwf	4
+   793     06E9  120A  118A  2003  120A  118A  	fcall	stringdir
+   794     06EE  1683               	bsf	3,5	;RP0=1, select bank1
+   795     06EF  1303               	bcf	3,6	;RP1=0, select bank1
+   796     06F0  0092               	movwf	18	;volatile
+   797     06F1                     l709:
+   798                           
+   799                           ;styloapp.c: 138:                 }
+   800     06F1  3003               	movlw	3
+   801     06F2  00F0               	movwf	___bmul@multiplicand
+   802     06F3  0873               	movf	sonar@id,w
+   803     06F4  120A  118A  26A6  120A  118A  	fcall	___bmul
+   804     06F9  3E62               	addlw	low (((_ESCALA-__stringbase)| (0+32768)+1))
+   805     06FA  0084               	movwf	4
+   806     06FB  120A  118A  2003  120A  118A  	fcall	stringdir
+   807     0700  00F5               	movwf	??_sonar
+   808     0701  120A  118A  2003  120A  118A  	fcall	stringdir
+   809     0706  00F6               	movwf	??_sonar+1
+   810     0707  1003               	clrc
+   811     0708  0CF6               	rrf	??_sonar+1,f
+   812     0709  0CF5               	rrf	??_sonar,f
+   813     070A  1003               	clrc
+   814     070B  0CF6               	rrf	??_sonar+1,f
+   815     070C  0CF5               	rrf	??_sonar,f
+   816     070D  0875               	movf	??_sonar,w
+   817     070E  1283               	bcf	3,5	;RP0=0, select bank0
+   818     070F  1303               	bcf	3,6	;RP1=0, select bank0
+   819     0710  0095               	movwf	21	;volatile
+   820     0711                     l711:
+   821                           
+   822                           ;styloapp.c: 139:             }
+   823     0711  3003               	movlw	3
+   824     0712  00F0               	movwf	___bmul@multiplicand
+   825     0713  0873               	movf	sonar@id,w
+   826     0714  120A  118A  26A6  120A  118A  	fcall	___bmul
+   827     0719  3E62               	addlw	low (((_ESCALA-__stringbase)| (0+32768)+1))
+   828     071A  0084               	movwf	4
+   829     071B  120A  118A  2003  120A  118A  	fcall	stringdir
+   830     0720  3903               	andlw	3
+   831     0721  00F5               	movwf	??_sonar
+   832     0722  0EF5               	swapf	??_sonar,f
+   833     0723  1283               	bcf	3,5	;RP0=0, select bank0
+   834     0724  1303               	bcf	3,6	;RP1=0, select bank0
+   835     0725  0817               	movf	23,w	;volatile
+   836     0726  0675               	xorwf	??_sonar,w
+   837     0727  39CF               	andlw	-49
+   838     0728  0675               	xorwf	??_sonar,w
+   839     0729  0097               	movwf	23	;volatile
+   840     072A                     l713:
+   841                           
+   842                           ;styloapp.c: 141: 
+   843     072A  0817               	movf	23,w	;volatile
+   844     072B  39F0               	andlw	-16
+   845     072C  380C               	iorlw	12
+   846     072D  0097               	movwf	23	;volatile
+   847     072E                     l47:
+   848     072E  0008               	return
+   849     072F                     __end_of_sonar:
+   850                           
+   851                           	psect	text2
+   852     06A6                     __ptext2:	
+   853 ;; *************** function ___bmul *****************
+   854 ;; Defined at:
+   855 ;;		line 4 in file "C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul8.c"
+   856 ;; Parameters:    Size  Location     Type
+   857 ;;  multiplier      1    wreg     unsigned char 
+   858 ;;  multiplicand    1    0[COMMON] unsigned char 
+   859 ;; Auto vars:     Size  Location     Type
+   860 ;;  multiplier      1    2[COMMON] unsigned char 
+   861 ;;  product         1    1[COMMON] unsigned char 
+   862 ;; Return value:  Size  Location     Type
+   863 ;;                  1    wreg      unsigned char 
+   864 ;; Registers used:
+   865 ;;		wreg, status,2, status,0
+   866 ;; Tracked objects:
+   867 ;;		On entry : 0/0
+   868 ;;		On exit  : 0/0
+   869 ;;		Unchanged: 0/0
+   870 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   871 ;;      Params:         1       0       0       0       0
+   872 ;;      Locals:         2       0       0       0       0
+   873 ;;      Temps:          0       0       0       0       0
+   874 ;;      Totals:         3       0       0       0       0
+   875 ;;Total ram usage:        3 bytes
+   876 ;; Hardware stack levels used: 1
+   877 ;; This function calls:
+   878 ;;		Nothing
+   879 ;; This function is called by:
+   880 ;;		_sonar
+   881 ;; This function uses a non-reentrant model
+   882 ;;
+   883                           
+   884     06A6                     ___bmul:	
+   885                           ;psect for function ___bmul
+   886                           
+   887                           
+   888                           ;incstack = 0
+   889                           ; Regs used in ___bmul: [wreg+status,2+status,0]
+   890                           ;___bmul@multiplier stored from wreg
+   891     06A6  00F2               	movwf	___bmul@multiplier
+   892     06A7                     l671:
+   893     06A7  01F1               	clrf	___bmul@product
+   894     06A8                     l673:
+   895     06A8  1C72               	btfss	___bmul@multiplier,0
+   896     06A9  2EAB               	goto	u141
+   897     06AA  2EAC               	goto	u140
+   898     06AB                     u141:
+   899     06AB  2EAE               	goto	l677
+   900     06AC                     u140:
+   901     06AC                     l675:
+   902     06AC  0870               	movf	___bmul@multiplicand,w
+   903     06AD  07F1               	addwf	___bmul@product,f
+   904     06AE                     l677:
+   905     06AE  1003               	clrc
+   906     06AF  0DF0               	rlf	___bmul@multiplicand,f
+   907     06B0                     l679:
+   908     06B0  1003               	clrc
+   909     06B1  0CF2               	rrf	___bmul@multiplier,f
+   910     06B2  0872               	movf	___bmul@multiplier,w
+   911     06B3  1D03               	btfss	3,2
+   912     06B4  2EB6               	goto	u151
+   913     06B5  2EB7               	goto	u150
+   914     06B6                     u151:
+   915     06B6  2EA8               	goto	l673
+   916     06B7                     u150:
+   917     06B7                     l681:
+   918     06B7  0871               	movf	___bmul@product,w
+   919     06B8                     l171:
+   920     06B8  0008               	return
+   921     06B9                     __end_of___bmul:
+   922                           
+   923                           	psect	text3
+   924     06B9                     __ptext3:	
+   925 ;; *************** function _init_stylophone *****************
+   926 ;; Defined at:
+   927 ;;		line 109 in file "styloapp.c"
+   928 ;; Parameters:    Size  Location     Type
+   929 ;;		None
+   930 ;; Auto vars:     Size  Location     Type
    931 ;;		None
-   932 ;; Auto vars:     Size  Location     Type
-   933 ;;		None
-   934 ;; Return value:  Size  Location     Type
-   935 ;;                  1    wreg      void 
-   936 ;; Registers used:
-   937 ;;		status,2
-   938 ;; Tracked objects:
-   939 ;;		On entry : 0/0
-   940 ;;		On exit  : 0/0
-   941 ;;		Unchanged: 0/0
-   942 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   943 ;;      Params:         0       0       0       0       0
-   944 ;;      Locals:         0       0       0       0       0
-   945 ;;      Temps:          0       0       0       0       0
-   946 ;;      Totals:         0       0       0       0       0
-   947 ;;Total ram usage:        0 bytes
-   948 ;; Hardware stack levels used: 1
-   949 ;; This function calls:
-   950 ;;		Nothing
-   951 ;; This function is called by:
-   952 ;;		_main
-   953 ;; This function uses a non-reentrant model
-   954 ;;
-   955                           
-   956     06B9                     _init_stylophone:	
-   957                           ;psect for function _init_stylophone
-   958                           
-   959     06B9                     l685:	
-   960                           ;incstack = 0
-   961                           ; Regs used in _init_stylophone: [status,2]
-   962                           
-   963                           
-   964                           ;styloapp.c: 107: 
-   965     06B9  1683               	bsf	3,5	;RP0=1, select bank3
-   966     06BA  1703               	bsf	3,6	;RP1=1, select bank3
-   967     06BB  0188               	clrf	8	;volatile
-   968     06BC  0189               	clrf	9	;volatile
-   969                           
-   970                           ;styloapp.c: 109: 
-   971     06BD  1283               	bcf	3,5	;RP0=0, select bank0
-   972     06BE  1303               	bcf	3,6	;RP1=0, select bank0
-   973     06BF  0185               	clrf	5	;volatile
-   974     06C0  0186               	clrf	6	;volatile
-   975     06C1  0187               	clrf	7	;volatile
-   976     06C2  0188               	clrf	8	;volatile
-   977     06C3                     l687:
-   978                           
-   979                           ;styloapp.c: 111:     CCPR1L = (ESCALA[id].duty_val >> 2);
-   980     06C3  30FF               	movlw	255
-   981     06C4  1683               	bsf	3,5	;RP0=1, select bank1
-   982     06C5  1303               	bcf	3,6	;RP1=0, select bank1
-   983     06C6  0085               	movwf	5	;volatile
-   984     06C7                     l689:
-   985     06C7  30FF               	movlw	255
-   986     06C8  0086               	movwf	6	;volatile
-   987     06C9                     l691:
-   988     06C9  30FF               	movlw	255
-   989     06CA  0088               	movwf	8	;volatile
-   990     06CB                     l693:
-   991                           
-   992                           ;styloapp.c: 112:     CCP1CONbits.DC1B = (ESCALA[id].duty_val & 3);
-   993     06CB  1107               	bcf	7,2	;volatile
-   994     06CC                     l695:
-   995                           
-   996                           ;styloapp.c: 113: 
-   997     06CC  1587               	bsf	7,3	;volatile
-   998     06CD                     l697:
-   999                           
-  1000                           ;styloapp.c: 114:     CCP1CONbits.CCP1M = 0x0C;
-  1001     06CD  1607               	bsf	7,4	;volatile
-  1002     06CE                     l699:
-  1003                           
-  1004                           ;styloapp.c: 119: void main(void) {
-  1005     06CE  3004               	movlw	4
-  1006     06CF  1283               	bcf	3,5	;RP0=0, select bank0
-  1007     06D0  1303               	bcf	3,6	;RP1=0, select bank0
-  1008     06D1  0092               	movwf	18	;volatile
-  1009     06D2                     l43:
-  1010     06D2  0008               	return
-  1011     06D3                     __end_of_init_stylophone:
-  1012     0002                     ___latbits      equ	2
-  1013     007E                     btemp           set	126	;btemp
-  1014     007E                     btemp0          set	126
-  1015     007F                     btemp1          set	127
-  1016     007E                     wtemp0          set	126
-  1017     007F                     wtemp0a         set	127
-  1018     007F                     ttemp0a         set	127
-  1019     0080                     ltemp0a         set	128
+   932 ;; Return value:  Size  Location     Type
+   933 ;;                  1    wreg      void 
+   934 ;; Registers used:
+   935 ;;		status,2
+   936 ;; Tracked objects:
+   937 ;;		On entry : 0/0
+   938 ;;		On exit  : 0/0
+   939 ;;		Unchanged: 0/0
+   940 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   941 ;;      Params:         0       0       0       0       0
+   942 ;;      Locals:         0       0       0       0       0
+   943 ;;      Temps:          0       0       0       0       0
+   944 ;;      Totals:         0       0       0       0       0
+   945 ;;Total ram usage:        0 bytes
+   946 ;; Hardware stack levels used: 1
+   947 ;; This function calls:
+   948 ;;		Nothing
+   949 ;; This function is called by:
+   950 ;;		_main
+   951 ;; This function uses a non-reentrant model
+   952 ;;
+   953                           
+   954     06B9                     _init_stylophone:	
+   955                           ;psect for function _init_stylophone
+   956                           
+   957     06B9                     l685:	
+   958                           ;incstack = 0
+   959                           ; Regs used in _init_stylophone: [status,2]
+   960                           
+   961                           
+   962                           ;styloapp.c: 111:     PR2 = ESCALA[id].pr2_val;
+   963     06B9  1683               	bsf	3,5	;RP0=1, select bank3
+   964     06BA  1703               	bsf	3,6	;RP1=1, select bank3
+   965     06BB  0188               	clrf	8	;volatile
+   966     06BC  0189               	clrf	9	;volatile
+   967                           
+   968                           ;styloapp.c: 113: 
+   969     06BD  1283               	bcf	3,5	;RP0=0, select bank0
+   970     06BE  1303               	bcf	3,6	;RP1=0, select bank0
+   971     06BF  0185               	clrf	5	;volatile
+   972     06C0  0186               	clrf	6	;volatile
+   973     06C1  0187               	clrf	7	;volatile
+   974     06C2  0188               	clrf	8	;volatile
+   975     06C3                     l687:
+   976                           
+   977                           ;styloapp.c: 115:     CCP1CONbits.DC1B = (ESCALA[id].duty_val & 3);
+   978     06C3  30FF               	movlw	255
+   979     06C4  1683               	bsf	3,5	;RP0=1, select bank1
+   980     06C5  1303               	bcf	3,6	;RP1=0, select bank1
+   981     06C6  0085               	movwf	5	;volatile
+   982     06C7                     l689:
+   983     06C7  30FF               	movlw	255
+   984     06C8  0086               	movwf	6	;volatile
+   985     06C9                     l691:
+   986     06C9  30FF               	movlw	255
+   987     06CA  0088               	movwf	8	;volatile
+   988     06CB                     l693:
+   989                           
+   990                           ;styloapp.c: 116: 
+   991     06CB  1107               	bcf	7,2	;volatile
+   992     06CC                     l695:
+   993                           
+   994                           ;styloapp.c: 117:     CCP1CONbits.CCP1M = 0x0C;
+   995     06CC  1587               	bsf	7,3	;volatile
+   996     06CD                     l697:
+   997                           
+   998                           ;styloapp.c: 118: }
+   999     06CD  1607               	bsf	7,4	;volatile
+  1000     06CE                     l699:
+  1001                           
+  1002                           ;styloapp.c: 123:     init_stylophone();
+  1003     06CE  3004               	movlw	4
+  1004     06CF  1283               	bcf	3,5	;RP0=0, select bank0
+  1005     06D0  1303               	bcf	3,6	;RP1=0, select bank0
+  1006     06D1  0092               	movwf	18	;volatile
+  1007     06D2                     l43:
+  1008     06D2  0008               	return
+  1009     06D3                     __end_of_init_stylophone:
+  1010     0002                     ___latbits      equ	2
+  1011     007E                     btemp           set	126	;btemp
+  1012     007E                     btemp0          set	126
+  1013     007F                     btemp1          set	127
+  1014     007E                     wtemp0          set	126
+  1015     007F                     wtemp0a         set	127
+  1016     007F                     ttemp0a         set	127
+  1017     0080                     ltemp0a         set	128
+  1018                           
+  1019                           	psect	config
   1020                           
-  1021                           	psect	config
-  1022                           
-  1023                           ;Config register CONFIG1 @ 0x2007
-  1024                           ;	Oscillator Selection bits
-  1025                           ;	FOSC = LP, LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
-  1026                           ;	Watchdog Timer Enable bit
-  1027                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
-  1028                           ;	Power-up Timer Enable bit
-  1029                           ;	PWRTE = ON, PWRT enabled
-  1030                           ;	RE3/MCLR pin function select bit
-  1031                           ;	MCLRE = ON, RE3/MCLR pin function is MCLR
-  1032                           ;	Code Protection bit
-  1033                           ;	CP = OFF, Program memory code protection is disabled
-  1034                           ;	Data Code Protection bit
-  1035                           ;	CPD = 0x1, unprogrammed default
-  1036                           ;	Brown Out Reset Selection bits
-  1037                           ;	BOREN = OFF, BOR disabled
-  1038                           ;	Internal External Switchover bit
-  1039                           ;	IESO = 0x1, unprogrammed default
-  1040                           ;	Fail-Safe Clock Monitor Enabled bit
-  1041                           ;	FCMEN = 0x1, unprogrammed default
-  1042                           ;	Low Voltage Programming Enable bit
-  1043                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
-  1044                           ;	In-Circuit Debugger Mode bit
-  1045                           ;	DEBUG = 0x1, unprogrammed default
-  1046     2007                     	org	8199
-  1047     2007  2CE0               	dw	11488
+  1021                           ;Config register CONFIG1 @ 0x2007
+  1022                           ;	Oscillator Selection bits
+  1023                           ;	FOSC = LP, LP oscillator: Low-power crystal on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN
+  1024                           ;	Watchdog Timer Enable bit
+  1025                           ;	WDTE = OFF, WDT disabled and can be enabled by SWDTEN bit of the WDTCON register
+  1026                           ;	Power-up Timer Enable bit
+  1027                           ;	PWRTE = ON, PWRT enabled
+  1028                           ;	RE3/MCLR pin function select bit
+  1029                           ;	MCLRE = ON, RE3/MCLR pin function is MCLR
+  1030                           ;	Code Protection bit
+  1031                           ;	CP = OFF, Program memory code protection is disabled
+  1032                           ;	Data Code Protection bit
+  1033                           ;	CPD = 0x1, unprogrammed default
+  1034                           ;	Brown Out Reset Selection bits
+  1035                           ;	BOREN = OFF, BOR disabled
+  1036                           ;	Internal External Switchover bit
+  1037                           ;	IESO = 0x1, unprogrammed default
+  1038                           ;	Fail-Safe Clock Monitor Enabled bit
+  1039                           ;	FCMEN = 0x1, unprogrammed default
+  1040                           ;	Low Voltage Programming Enable bit
+  1041                           ;	LVP = OFF, RB3 pin has digital I/O, HV on MCLR must be used for programming
+  1042                           ;	In-Circuit Debugger Mode bit
+  1043                           ;	DEBUG = 0x1, unprogrammed default
+  1044     2007                     	org	8199
+  1045     2007  2CE0               	dw	11488
 
 Data Sizes:
     Strings     0
@@ -1153,7 +1151,7 @@ DATA                 0      0      17      0.0%
 
 
 Microchip Technology PIC Macro Assembler V3.10 build 20250813170317 
-Symbol Table                                                                                   Sun Mar 22 12:42:47 2026
+Symbol Table                                                                                   Sun Mar 22 13:37:52 2026
 
                       pc 0002           ___bmul@product 0071                       l43 06D2  
                      l47 072E                       fsr 0004                      l171 06B8  
