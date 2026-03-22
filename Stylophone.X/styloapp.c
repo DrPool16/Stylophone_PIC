@@ -19,54 +19,58 @@
 
 #define _XTAL_FREQ 32768      // Definimos la frecuencia de 6MHz
 
+#define TOTAL_TECLAS 24
+
 // Estructura de Nota (Ingeniería de datos)
 typedef struct {
     uint8_t pr2_val;    // Valor del periodo
     uint16_t duty_val;  // Valor del ciclo de trabajo (10 bits)
 } Nota;
 
-/* TABLA DE NOTAS (Octava 3 y 4) 
-   Calculado para 6MHz con Prescaler de 4 en Timer 2.
-   Fórmula: PR2 = (6,000,000 / (4 * Fnota * 4)) - 1
-*/
-
-const Nota ESCALA[] = {
-    /*OCTAVA 3*/
-    {62, 250}, // Do3           (130.8 Hz)  -> Indix 0
-    {58, 236}, // Do3#/Reb3     (138.6 Hz)  -> Indix 1
-    {55, 223}, // Re3           (146.8 Hz)  -> Indix 2
-    {52, 210}, // Re3#/Mib3     (155.6 Hz)  -> Indix 3
-    {49, 199}, // Mib3          (164.8 Hz)  -> Indix 4
-    {46, 188}, // Fa3           (174.6 Hz)  -> Indix 5
-    {43, 177}, // Fa3#/Solb3    (184.9 Hz)  -> Indix 6
-    {40, 167}, // Sol3          (196.0 Hz)  -> Indix 7
-    {38, 158}, // Sol3#/Lab3    (207.6 Hz)  -> Indix 8
-    {36, 149}, // La3           (220.0 Hz)  -> Indix 9
-    {34, 141}, // La3#/Sib3     (233.0 Hz)  -> Indix 10
-    {32, 132},  // Si3           (247.0 Hz)  -> Indix 11
-
-
-    /*OCTAVA 4*/
-    {30, 125}, // Do3           (261.8 Hz)  -> Indix 0
-    {28, 118}, // Do3#/Reb3     (277.1 Hz)  -> Indix 1
-    {27, 111}, // Re3           (293.6 Hz)  -> Indix 2
-    {25, 105}, // Re3#/Mib3     (311.1 Hz)  -> Indix 3
-    {24, 99},  // Mib3          (329.6 Hz)  -> Indix 4
-    {22, 93},  // Fa3           (349.2 Hz)  -> Indix 5
-    {21, 88},  // Fa3#/Solb3    (369.9 Hz)  -> Indix 6
-    {20, 83},  // Sol3          (391.9 Hz)  -> Indix 7
-    {19, 79},  // Sol3#/Lab3    (415.3 Hz)  -> Indix 8
-    {18, 74},  // La3           (440.0 Hz)  -> Indix 9
-    {17, 70},  // La3#/Sib3     (466.1 Hz)  -> Indix 10
-    {16, 66}   // Si3           (493.8 Hz)  -> Indix 11
-
-};
 // Estructura para el mapeo de teclas (Hardware)
 typedef struct {
     volatile unsigned char *port; // Puntero al registro del puerto
     uint8_t pin;                  // Bit del pin (0-7)
     uint8_t nota_idx;             // Índice de la nota en la tabla ESCALA
 } Tecla;
+
+
+/* TABLA DE NOTAS (Octava 3 y 4) 
+   Calculado para 6MHz con Prescaler de 4 en Timer 2.
+   Fórmula: PR2 = (6,000,000 / (4 * Fnota * 4)) - 1
+*/
+const Nota ESCALA[] = {
+    /*OCTAVA 3*/
+    {62, 125}, // Do3           (130.8 Hz)  -> Indix 0
+    {58, 118}, // Do3#/Reb3     (138.6 Hz)  -> Indix 1
+    {55, 111}, // Re3           (146.8 Hz)  -> Indix 2
+    {52, 105}, // Re3#/Mib3     (155.6 Hz)  -> Indix 3
+    {49, 99}, // Mib3          (164.8 Hz)  -> Indix 4
+    {46, 94}, // Fa3           (174.6 Hz)  -> Indix 5
+    {43, 89}, // Fa3#/Solb3    (184.9 Hz)  -> Indix 6
+    {40, 84}, // Sol3          (196.0 Hz)  -> Indix 7
+    {38, 79}, // Sol3#/Lab3    (207.6 Hz)  -> Indix 8
+    {36, 74}, // La3           (220.0 Hz)  -> Indix 9
+    {34, 70}, // La3#/Sib3     (233.0 Hz)  -> Indix 10
+    {32, 66},  // Si3           (247.0 Hz)  -> Indix 11
+
+
+    /*OCTAVA 4*/
+    {30, 63}, // Do3           (261.8 Hz)  -> Indix 0
+    {28, 59}, // Do3#/Reb3     (277.1 Hz)  -> Indix 1
+    {27, 56}, // Re3           (293.6 Hz)  -> Indix 2
+    {25, 53}, // Re3#/Mib3     (311.1 Hz)  -> Indix 3
+    {24, 50},  // Mib3          (329.6 Hz)  -> Indix 4
+    {22, 47},  // Fa3           (349.2 Hz)  -> Indix 5
+    {21, 44},  // Fa3#/Solb3    (369.9 Hz)  -> Indix 6
+    {20, 42},  // Sol3          (391.9 Hz)  -> Indix 7
+    {19, 39},  // Sol3#/Lab3    (415.3 Hz)  -> Indix 8
+    {18, 37},  // La3           (440.0 Hz)  -> Indix 9
+    {17, 35},  // La3#/Sib3     (466.1 Hz)  -> Indix 10
+    {16, 33}   // Si3           (493.8 Hz)  -> Indix 11
+
+};
+
 // --- MAPEO DE LAS 22 NOTAS ---
 // Aquí debes completar los 22 registros según donde soldaste cada cable
 const Tecla MIS_TECLAS[] = {
@@ -94,24 +98,17 @@ const Tecla MIS_TECLAS[] = {
     {&PORTD, 4, 20}, // Key 21 -> Sol#4
     {&PORTD, 5, 21}, // Key 22 -> La4
     {&PORTD, 6, 22}, // Key 23 -> La#4
-    {&PORTD, 7, 23} // Key 24 -> Si4
+    {&PORTD, 7, 23}  // Key 24 -> Si4
 };
 
 
 void init_stylophone(void) {
     // Configuración Digital
-    ANSEL = 0;
-    ANSELH = 0;
-
+    ANSEL = 0; ANSELH = 0;
     // Limpiar puertos
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-
+    PORTA = 0; PORTB = 0; PORTC = 0; PORTD = 0;
     // Entradas y Salidas
-    TRISA = 0xFF; // Teclas Puerto A
-    TRISB = 0xFF; // Teclas Puerto B
-    TRISD = 0xFF; // Teclas Puerto D
+    TRISA = 0xFF;  TRISB = 0xFF;  TRISD = 0xFF; // Teclas Puerto A B and C
     TRISC2 = 0;  // Pin RC1(CCP1) como salida.
     TRISC3 = 1;
     TRISC4 = 1;
@@ -119,7 +116,7 @@ void init_stylophone(void) {
 
     // Configuración Timer 2 para PWM
     // T2CON: Prescaler 1:1, Timer2 ON
-    T2CON = 0b00000000; 
+    T2CON = 0b00000100;; 
 }
 
 void sonar(int id) {
@@ -137,18 +134,28 @@ void sonar(int id) {
     CCP1CONbits.CCP1M = 0x0C; // Modo PWM Activo
 }
 
+// --- BUCLE PRINCIPAL ---
+
 void main(void) {
     init_stylophone();
-
+    
     while(1) {
-        // Escaneo de teclado con prioridad
-        // (Puedes mapear tus pines según tu hardware actual)
-        if (RA0)      sonar(0);  // Do3
-        else if (RA1) sonar(1);  // Re3
-        else if (RA2) sonar(2);  // Mi3
-        else if (RB0) sonar(7);  // Do4
-        else if (RB1) sonar(8);  // Re4
-        else if (RB2) sonar(10); // La4
-        else sonar(-1);          // Silencio
+        int nota_detectada = -1;
+
+        // Escaneo determinista (Pilar de Ingeniería)
+        for(int i = 0; i < TOTAL_TECLAS; i++) {
+            // Leemos el puerto y aplicamos máscara de bit
+            if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
+                
+                // Pequeño debounce de seguridad (5ms)
+                __delay_ms(5);
+                if (*MIS_TECLAS[i].port & (1 << MIS_TECLAS[i].pin)) {
+                    nota_detectada = MIS_TECLAS[i].nota_idx;
+                    break; // Salimos al detectar la primera pulsación
+                }
+            }
+        }
+        
+        sonar(nota_detectada);
     }
 }
