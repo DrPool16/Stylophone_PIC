@@ -34,3 +34,12 @@ The key scanning loop exits immediately upon detection (break), ensuring predict
 Precomputed frequency values (LUT) eliminate runtime calculations, making the system viable under extreme clock constraints.
 ## 🔄 System Flow Diagram
 <img width="807" height="1339" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/b55ee6ab-d803-4a2f-b8f8-b4794787d787" />
+
+## 🏷 GitHub Topics
+- embedded-systems
+- pic16f887
+- mplab-x
+- pwm-audio
+- c-programming
+- low-power
+
